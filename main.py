@@ -1,12 +1,13 @@
 from random import choice
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit
 app = QApplication([])
 
 window = QWidget()
 window.resize(200, 310)
 
 window.setWindowTitle("Menu")
-window.setStyleSheet("background-image: url('kotik fon.jpg')")
+window.setStyleSheet(""".QWidget {background-image: url('kotik fon.jpg')})
+                     QPushButton {backgrond-color: pink; color: blue}""")
 window.show()
 
 butn1 = QPushButton("Прочитати")
@@ -37,19 +38,51 @@ main_line2.addLayout(line2, stretch=1)
 main_line2.addWidget(Jokes, stretch=2)
 window1.setLayout(main_line2)
 
+window2 = QWidget()
+window2.resize(400, 250)
+
+window2.setWindowTitle("Add")
+window2.setStyleSheet("background-color: 'pink'")
+#window2.show()
+
+buttn1 = QPushButton("Меню")
+buttn2 = QPushButton("Додати")
+new_jokes = QLineEdit()
+
+line3 = QVBoxLayout()
+line3.addWidget(buttn1)
+line3.addWidget(buttn2)
+line3.addWidget(new_jokes)
+window2.setLayout(line3)
+
 def show_joke():
     with open("anekdot.txt", "r", encoding="UTF-8") as file:
         date = file.readlines()
         Jokes.setText(choice(date))
         # print(date.count("\n"))
         
+def menu():
+    window1.hide()
+    window.show()
 
 def read():
     window1.show()
     window.hide()
 
+def add():
+    window2.show()
+    window.hide()
+
+def meny():
+    window2.hide()
+    window.show()
+
 butn1.clicked.connect(read)
 button2.clicked.connect(show_joke)
+button1.clicked.connect(menu)
+butn2.clicked.connect(add)
+buttn1.clicked.connect(meny)
+
 
 app.exec()
 
