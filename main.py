@@ -22,7 +22,7 @@ window1 = QWidget()
 window1.resize(400, 250)
 
 window1.setWindowTitle("Jokes")
-window1.setStyleSheet("background-image: url('lapki fon.jpg')")
+window1.setStyleSheet("background-color: 'pink'")
 #window1.show()
 
 button1 = QPushButton("Меню")
@@ -33,7 +33,7 @@ line2 = QVBoxLayout()
 line2.addWidget(button1)
 line2.addWidget(button2)
 
-Jokes = QLabel("гугу")
+Jokes = QLabel("Натисни кнопку 'Анекдот'")
 main_line2.addLayout(line2, stretch=1)
 main_line2.addWidget(Jokes, stretch=2)
 window1.setLayout(main_line2)
@@ -61,6 +61,11 @@ def show_joke():
         Jokes.setText(choice(date))
         # print(date.count("\n"))
         
+def add_joke():
+    with open("anekdot.txt", "a", encoding="UTF-8") as file:
+        file.write('\n')
+        file.write(new_jokes.text())
+
 def menu():
     window1.hide()
     window.show()
@@ -82,7 +87,6 @@ button2.clicked.connect(show_joke)
 button1.clicked.connect(menu)
 butn2.clicked.connect(add)
 buttn1.clicked.connect(meny)
-
+buttn2.clicked.connect(add_joke)
 
 app.exec()
-
