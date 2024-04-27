@@ -6,8 +6,8 @@ window = QWidget()
 window.resize(200, 310)
 
 window.setWindowTitle("Menu")
-window.setStyleSheet(""".QWidget {background-image: url('kotik fon.jpg')})
-                     QPushButton {backgrond-color: pink; color: blue}""")
+window.setStyleSheet(""".QWidget {background-image: url('kotik fon.png')})
+                     QPushButton {backgrond-color: pink; color: black}""")
 window.show()
 
 butn1 = QPushButton("Прочитати")
@@ -22,7 +22,7 @@ window1 = QWidget()
 window1.resize(400, 250)
 
 window1.setWindowTitle("Jokes")
-window1.setStyleSheet("background-color: 'red'")
+window1.setStyleSheet("background-image: url('lapki fon.jpg')")
 #window1.show()
 
 button1 = QPushButton("Меню")
